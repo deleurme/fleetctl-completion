@@ -40,6 +40,8 @@ _fleetctl() {
 			return 0
 			;;
 	esac
+  
+  # fleetctl list-units |awk '{print $1}'|sed 1d
 
   COMPREPLY=($(compgen -W "${commands}" -- "${cur}"))
   return 0
