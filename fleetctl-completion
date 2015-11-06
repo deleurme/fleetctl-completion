@@ -31,8 +31,8 @@ _fleetctl() {
   # verify          DEPRECATED - No longer works
   # version         Print the version and exit
 
-	commands="cat destroy fd-forward help journal list-machines list-unit-files list-units load ssh start status stop submit unload verify version"
-	help_lookup="cat destroy fd-forward journal list-machines list-unit-files list-units load ssh start status stop submit unload verify version" 
+	commands="cat destroy fd-forward help journal list-machines list-unit-files list-units load ssh start status stop submit unload version"
+	help_lookup="cat destroy fd-forward journal list-machines list-unit-files list-units load ssh start status stop submit unload version" 
 	case "${prev}" in
 		help )
 			args=$(for word in $help_lookup;do echo "$word";done)
