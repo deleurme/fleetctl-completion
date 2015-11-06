@@ -39,6 +39,16 @@ _fleetctl() {
 			COMPREPLY=( $(compgen -W "${args}" -- "${cur}") )
 			return 0
 			;;
+    cat|journal|destroy|start|status|submit|stop|load )
+      components=$(fleetctl list-units |awk '{print $1}'|sed 1d)
+      COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
+      return 0
+      ;;
+    ssh )
+      components=$(fleetctl list-machines |awk '{print $1}'|sed 1d|sed s/\\.//g)
+      COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
+      return 0
+      ;;
 	esac
   
   # fleetctl list-units |awk '{print $1}'|sed 1d
