@@ -39,7 +39,7 @@ _fleetctl() {
 			COMPREPLY=( $(compgen -W "${args}" -- "${cur}") )
 			return 0
 			;;
-    cat|journal|destroy|start|status|submit|stop|load )
+    cat|journal|destroy|start|status|submit|stop|load|unload )
       components=$(fleetctl list-units |awk '{print $1}'|sed 1d)
       COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
       return 0
