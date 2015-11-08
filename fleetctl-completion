@@ -40,12 +40,12 @@ _fleetctl() {
 			return 0
 			;;
     cat|journal|destroy|start|status|submit|stop|load|unload )
-      components=$(fleetctl list-units |awk '{print $1}'|sed 1d)
+      components=$(fleetctl list-units --no-legend --fields=unit)
       COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
       return 0
       ;;
     ssh )
-      components=$(fleetctl list-machines |awk '{print $1}'|sed 1d|sed s/\\.//g)
+      components=$(fleetctl list-machines  --fields=machine --no-legend|sed s/\\.//g)
       COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
       return 0
       ;;
