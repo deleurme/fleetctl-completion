@@ -49,6 +49,10 @@ _fleetctl() {
       COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
       return 0
       ;;
+    list-machines )
+      COMPREPLY=( $(compgen -W "--full -l --no-lengend" -- "${cur}") )
+      return 0
+      ;;
 	esac
   
   # fleetctl list-units |awk '{print $1}'|sed 1d
