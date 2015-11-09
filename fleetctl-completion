@@ -45,8 +45,9 @@ _fleetctl() {
       return 0
       ;;
     ssh )
-      components=$(fleetctl list-machines  --fields=machine --no-legend|sed s/\\.//g)
-      COMPREPLY=( $(compgen -W "${components}" -- "${cur}") )
+      machines=$(fleetctl list-machines --fields=machine --no-legend|sed s/\\.//g)
+      units=$(fleetctl list-units --no-legend --fields=unit)
+      COMPREPLY=( $(compgen -W "${units}  ${machines}" -- "${cur}") )
       return 0
       ;;
     list-machines )
